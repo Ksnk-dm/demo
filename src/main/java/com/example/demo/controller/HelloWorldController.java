@@ -4,14 +4,20 @@ import com.example.demo.model.City;
 import com.example.demo.repository.CityRepository;
 import com.example.demo.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
-@RestController
+@Controller
 public class HelloWorldController {
     @Autowired
     private CityService cityService;
@@ -27,8 +33,13 @@ public class HelloWorldController {
         return "add";
     }
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String hello() {
-        return "Hello world";
+        return "login";
     }
+
+//    @GetMapping("/user")
+//    public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
+//        return Collections.singletonMap("name", principal.getAttribute("name"));
+//    }
 }
