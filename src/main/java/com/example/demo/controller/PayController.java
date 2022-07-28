@@ -20,10 +20,10 @@ public class PayController {
 
     @GetMapping
     public BaseResponse showStatus() {
-        return new BaseResponse("0000", 1);
+        return new BaseResponse("ok", 1);
     }
 
-    @PostMapping("/payss")
+    @PostMapping("/pays")
     public BaseResponse pay(@RequestParam(value = "key") String key, @RequestBody City city) {
         final BaseResponse response;
         if (sharedKey.equalsIgnoreCase(key)) {
